@@ -1,8 +1,8 @@
 #include "mbed.h"
 #define CENTER_BASE 1500
 Serial pc(USBTX, USBRX);
-DigitalIn encoder(D10);
-PwmOut servo(D11);
+DigitalIn encoder(D11);
+PwmOut servo(D13);
 
 Timer t;
 Ticker encoder_ticker;
@@ -26,7 +26,7 @@ int main() {
     encoder_ticker.attach(&encoder_control, .002);
 
     servo.period(.02);
-    int i = 0;
+    int i = -150;
     while (i <= 150) {
 
         servo_control(i);
